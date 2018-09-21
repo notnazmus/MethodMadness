@@ -2,101 +2,123 @@ package NSakib;
 
 public class NSakibLib {
 
+    /**
+     * 
+     * @param str
+     */
     public static void printLn(String str)
     {
         System.out.println(str);
     }
 
-    public static void isPalindrome(String str)
-    {
+    /**
+     *
+     * @param str
+     * @return
+     */
+    public static boolean isPalindrome(String str) {
         String newStr = "";
-        for (int i = str.length()-1; i >= 0; i--)
-        {
+        for (int i = str.length() - 1; i >= 0; i--) {
             newStr += str.substring(i, i + 1);
             //System.out.println(str.substring(i,i+1));
             //System.out.println(newStr);
         }
 
-        if (newStr.equals(str))
-        {
-            System.out.println("True");
-        } else
-        {
-            System.out.println("False");
+        if (newStr.equals(str)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public static void cutOut(String mainStr, String subStr)
-    {
+    /**
+     *
+     * @param mainStr
+     * @param subStr
+     * @return
+     */
+    public static String cutOut(String mainStr, String subStr) {
         String finalStr = "";
         int i = mainStr.indexOf(subStr);
         //System.out.println(mainStr.indexOf(subStr));
-        if (i == 0)
-        {
+        if (i == 0) {
             finalStr = mainStr.substring(subStr.length());
         } else {
             finalStr = mainStr.substring(0, i) + mainStr.substring(i + subStr.length());
         }
-        System.out.println(finalStr);
+        return (finalStr);
     }
 
-    public static void isFibonacci(int num)
-    {
+    /**
+     *
+     * @param num
+     * @return
+     */
+    public static boolean isFibonacci(int num) {
         int fibonacciNum = 1;
         int previousNum = 0;
         int placeHolder = 0;
-        while (fibonacciNum < num)
-        {
+        while (fibonacciNum < num) {
             placeHolder = fibonacciNum;
             fibonacciNum += previousNum;
-            previousNum =  placeHolder;
+            previousNum = placeHolder;
         }
-        if (fibonacciNum == num )
-        {
-            printLn("True");
+        if (fibonacciNum == num) {
+            return true;
         } else {
-            printLn("False");
+            return false;
         }
     }
 
-    public static void sumUpTo(int num)
-    {
-        int finalSum= 0;
-        for (int i=0; i <= num; i++)
-        {
-            finalSum+=i;
+    /**
+     *
+     * @param num
+     * @return
+     */
+    public static int sumUpTo(int num) {
+        int finalSum = 0;
+        for (int i = 0; i <= num; i++) {
+            finalSum += i;
         }
-        printLn(String.valueOf(finalSum));
+        return (finalSum);
     }
 
-    public static void multiplicationTable(int base,int range)
-    {
+    /**
+     *
+     * @param base
+     * @param range
+     */
+    public static void multiplicationTable(int base, int range) {
         String table = "";
-        for (int i = 0; i <= range; i++)
-        {
-            table += String.valueOf(base)+"*"+String.valueOf(i)+"="+String.valueOf(base*i)+"; ";
+        for (int i = 0; i <= range; i++) {
+            table += String.valueOf(base) + "*" + String.valueOf(i) + "=" + String.valueOf(base * i) + "; ";
         }
         printLn(table);
     }
 
-    public static void quadSolver(double a, double b,double c)
-    {
+    /**
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @return
+     */
+    public static String quadSolver(double a, double b, double c) {
         double root1 = 0;
         double root2 = 0;
-        double discriminant = (b*b)-4*a*c;
-        if ( discriminant < 0)
-        {
+        double discriminant = (b * b) - 4 * a * c;
+        if (discriminant < 0) {
+            return(String.valueOf(a) + "x^2 + " + String.valueOf(b) + "x + " + String.valueOf(c) + " " + " Has No Real Roots");
+        } else {
+            root1 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+            root2 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
             printLn("");
-            printLn( String.valueOf(a)+"x^2 + "+String.valueOf(b)+"x + "+String.valueOf(c)+" " + " Has No Real Roots");
-        } else
-        {
-            root1 = (-b + Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a);
-            root2 = (-b - Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a);
-            printLn("");
-            printLn(String.valueOf(a)+"x^2 + "+String.valueOf(b)+"x + "+String.valueOf(c)+" ");
-            printLn("Root = "+String.valueOf(root1) +"  Root = "+String.valueOf(root2));
+            return (String.valueOf(a) + "x^2 + " + String.valueOf(b) + "x + " + String.valueOf(c) + " " + "Root = " + String.valueOf(root1) + "  Root = " + String.valueOf(root2));
+
         }
+
     }
+
 
 
 }
